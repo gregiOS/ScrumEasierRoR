@@ -1,0 +1,2 @@
+# ScrumEasier
+Projekt programistyczny 
