@@ -1,0 +1,27 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#logo{
+  background: white;
+  padding: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Arial", serif;
+  color: black;
+  text-align: center;
+}
+#content{
+  margin-left: 17em;
+  padding: 1em;
+}
+#menu {
+  float: left;
+  padding: 1em 2em;
+  width: 13em;
+  min-height: 40em;
+  border-right: 2px solid;
+}
+#menu ul{
+  list-style-type:none;
+  padding:5px;
+  margin:5px;  
+} 

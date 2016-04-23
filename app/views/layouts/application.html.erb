@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScrumApp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div id="logo" >
+      Projekty
+    </div>
+    <div id="columns" >
+      <div id="menu" >
+      	<ul>
+      		<li>
+            <%= link_to 'Lista projektów', projects_path  %>
+          </li>   
+      		<li>
+ 			<% if session[:user_id] %>
+          		<%= link_to 'Wyloguj', logout_path, method: :delete  %>
+        	<% end %>
+        	</li>
+
+    	</ul>
+      </div>
+      <div id="content" >
+        <% if flash[:notice] %>
+          <p id="notice"><%= flash[:notice] %></p>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+
+</body>
+</html>
