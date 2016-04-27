@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :sprint_id %><br>
-    <%= f.number_field :sprint_id %>
+    <!-- Pole niewidoczne przechowujace id sprintu, ktore przyszlo jako parametr w url pod kluczem "format" -->
+    <%= f.hidden_field :sprint_id, :value => params[:format]%>
   </div>
   <div class="field">
     <%= f.label :name %><br>
@@ -29,11 +29,10 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.collection_select :user_id, User.all, :id, :login, multiple: true, :prompt => "Please Select" %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.hidden_field :status, :value => 2%>
   </div>
   <div class="actions">
     <%= f.submit %>

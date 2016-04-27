@@ -2,7 +2,9 @@
 
 <p>
   <strong>Sprint:</strong>
-  <%= @task.sprint_id %>
+  <% Sprint.where(:id => @task.sprint_id).each do |sprint| %>
+        <%= sprint.name%>
+    <% end %>
 </p>
 
 <p>
@@ -22,13 +24,19 @@
 
 <p>
   <strong>User:</strong>
-  <%= @task.user_id %>
+  <% User.where(:id => @task.user_id).each do |user| %>
+        <%= user.login%>
+    <% end %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @task.status %>
+  <% if @task.status == 2 %>
+  In track
+  <% else %>
+  Done
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Back', sprints_path %>
