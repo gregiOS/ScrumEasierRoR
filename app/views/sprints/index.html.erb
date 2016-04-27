@@ -1,15 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
+<h1>Listing sprints</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Lista sprintow</th>
+      <th>Project</th>
+      <th>Name</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,9 +12,10 @@
   </thead>
 
   <tbody>
-  	<% Sprint.where(:project_id => @project.id).each do |sprint| %>
+    <% @sprints.each do |sprint| %>
       <tr>
-        <td><%= sprint.name%></td>
+        <td><%= sprint.project_id %></td>
+        <td><%= sprint.name %></td>
         <td><%= link_to 'Show', sprint %></td>
         <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
         <td><%= link_to 'Destroy', sprint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,6 +25,5 @@
 </table>
 
 <br>
-<%= link_to 'Dodaj sprint', new_sprint_path(@project.id) %>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+
+<%= link_to 'New Sprint', new_sprint_path %>

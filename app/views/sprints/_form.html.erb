@@ -1,0 +1,27 @@
+<%= form_for(@sprint) do |f| %>
+  <% if @sprint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sprint.errors.count, "error") %> prohibited this sprint from being saved:</h2>
+
+      <ul>
+      <% @sprint.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="field">
+    <!-- Pole niewidoczne przechowujace id projektu, ktore przyszlo jako parametr w url pod kluczem "format" -->
+    <%= f.hidden_field :project_id, :value => params[:format]%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

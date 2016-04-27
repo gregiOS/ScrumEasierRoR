@@ -1,4 +1,6 @@
 ScrumApp::Application.routes.draw do
+  resources :sprints
+
   resources :registrations
 
     get 'admin' => 'admin#index'
