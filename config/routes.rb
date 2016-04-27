@@ -1,4 +1,6 @@
 ScrumApp::Application.routes.draw do
+  resources :tasks
+
   resources :sprints
 
   resources :registrations

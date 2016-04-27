@@ -11506,3 +11506,187 @@ Processing by ProjectsController#index as HTML
   [1m[35mProject Load (0.0ms)[0m  SELECT "projects".* FROM "projects"
   Rendered projects/index.html.erb within layouts/application (4.0ms)
 Completed 200 OK in 208ms (Views: 206.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2016-04-27 18:44:08 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mProject Load (1.0ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (77.1ms)
+Completed 200 OK in 1461ms (Views: 1111.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/admin.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/sprints.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2016-04-27 18:44:11 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/registrations.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/sprints.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-04-27 18:44:12 +0200
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2016-04-27 18:44:17 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mProject Load (1.0ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mSprint Load (1.0ms)[0m  SELECT "sprints".* FROM "sprints" WHERE "sprints"."project_id" = 1
+  Rendered projects/show.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 473ms (Views: 452.6ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/sprints/1" for 127.0.0.1 at 2016-04-27 18:44:27 +0200
+Processing by SprintsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSprint Load (1.0ms)[0m  SELECT "sprints".* FROM "sprints" WHERE "sprints"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered sprints/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 400ms (Views: 387.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2016-04-27 18:44:48 +0200
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mProject Load (0.0ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 397ms (Views: 388.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2016-04-27 18:44:54 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mProject Load (1.0ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mSprint Load (1.0ms)[0m  [1mSELECT "sprints".* FROM "sprints" WHERE "sprints"."project_id" = 1[0m
+  Rendered projects/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 414ms (Views: 403.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/sprints/new.1" for 127.0.0.1 at 2016-04-27 18:47:56 +0200
+Processing by SprintsController#new as 
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered sprints/_form.html.erb (136.3ms)
+  Rendered sprints/new.html.erb within layouts/application (1022.8ms)
+Completed 200 OK in 2145ms (Views: 2134.9ms | ActiveRecord: 1.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTasks (20160427170827)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "sprint_id" integer, "name" varchar(255), "importance" integer, "initial_estimate" integer, "user_id" integer, "status" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160427170827"]]
+  [1m[36m (26.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2016-04-27 19:10:00 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TasksController#new as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered tasks/_form.html.erb (69.0ms)
+  Rendered tasks/new.html.erb within layouts/application (194.1ms)
+Completed 200 OK in 3934ms (Views: 3855.7ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/admin.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/sprints.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:05 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/registrations.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/sprints.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2016-04-27 19:10:06 +0200

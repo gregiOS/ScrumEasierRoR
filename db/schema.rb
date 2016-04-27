@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425204526) do
+ActiveRecord::Schema.define(version: 20160427170827) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20160425204526) do
   create_table "sprints", force: true do |t|
     t.integer  "project_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.integer  "sprint_id"
+    t.string   "name"
+    t.integer  "importance"
+    t.integer  "initial_estimate"
+    t.integer  "user_id"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
