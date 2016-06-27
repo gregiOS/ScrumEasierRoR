@@ -4,12 +4,22 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+   
+   @projects = Project.all
+   @users = User.all
+  
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+  end
+  def addUser
+    @login = params[:Users];
+    @projectId = params[:project_id]
+
+   User.where(:login => @login).update_all(:project_id => @projectId)
+
   end
 
   # GET /projects/new
@@ -69,6 +79,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, :description, :user_id)
     end
+
 end

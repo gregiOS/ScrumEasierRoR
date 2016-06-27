@@ -13,6 +13,16 @@
 </p>
 
 <p>
+  <strong>Description:</strong>
+</p>
+<p>
+
+<textarea rows="12" cols="50">
+  <%= @task.description %>
+</textarea>
+</p>
+
+<p>
   <strong>Importance:</strong>
   <%= @task.importance %>
 </p>
@@ -23,7 +33,11 @@
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Finished:</strong>
+  <%= @task.finished %>%
+</p>
+<p>
+  <strong>Assigned to:</strong>
   <% User.where(:id => @task.user_id).each do |user| %>
         <%= user.login%>
     <% end %>
@@ -31,12 +45,8 @@
 
 <p>
   <strong>Status:</strong>
-  <% if @task.status == 2 %>
-  In track
-  <% else %>
-  Done
-  <% end %>
-</p>
+  <%= displayStatus(@task.status) %>
+ </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', sprints_path %>

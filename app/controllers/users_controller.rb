@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+  @projects = Project.all;
     @users = User.all
   end
 
@@ -20,6 +21,35 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
+
+  def displayRole(number)
+    if number == 1 
+      return "Admin"
+    elsif number == 2
+      return "Product owner"
+    else 
+      return "User"
+  end
+  end
+  helper_method :displayRole
+
+
+def getRoles(userId)
+  @role = User.find_by(id: session[:user_id]).role
+return availableRoles(@role)
+end
+helper_method :getRoles
+
+
+def availableRoles(roleId)
+  if roleId == 1
+  return [['Admin', 1], ['Product owner', 2], ['User', 3]]
+elsif roleId == 2
+ return  [['User', 3]]
+ end 
+end
+  helper_method :availableRoles
+  
 
   # POST /users
   # POST /users.json
@@ -73,6 +103,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:login, :first_name, :second_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:login, :first_name, :second_name, :email, :password, :password_confirmation, :project_id, :role)
     end
 end

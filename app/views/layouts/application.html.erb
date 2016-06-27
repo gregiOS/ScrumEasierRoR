@@ -5,30 +5,93 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 </head>
 <body>
+   <div class="container">
     <div id="logo" >
-      Projekty
+      Scrum Easier
+
+
+    
+    <ul class="nav navbar-nav navbar-right">
+
+
+ <li>
+       <% if session[:user_id] %>
+               <%= link_to product_owner_path do %>
+                <span class="glyphicon glyphicon-home"></span> Home
+          <% end %>
+<% end %>
+      
+        
+      </li>
+
+
+      <% if session[:user_id] %>
+      <li><%= link_to edit_user_path(User.find_by(id: session[:user_id])) do %><span class="glyphicon glyphicon-user"></span> My account</a>
+<% end %>
+<% end %>
+      </li>
+
+      <li>
+       <% if session[:user_id] %>
+               <%= link_to logout_path, method: :delete do %>
+                <span class="glyphicon glyphicon-log-out"></span> Logout
+          <% end %>
+<% end %>
+      
+        
+      </li>
+    </ul>
+
+
     </div>
+
+
     <div id="columns" >
       <div id="menu" >
-      	<ul>
-      		<li>
-            <%= link_to 'Lista projektów', projects_path  %>
-          </li>   
-      		<li>
- 			<% if session[:user_id] %>
-          		<%= link_to 'Wyloguj', logout_path, method: :delete  %>
-        	<% end %>
-        	</li>
+
+      	<ul class="nav nav-pills">
+      		<li role="presentation">
+         
+          <%= link_to projects_path do %>
+              <span class="glyphicon glyphicon-tasks"></span> Projects list
+          <% end %>
+
+          </li>  
+          <li role="presentation">
+         
+          <%= link_to sprints_path do %>
+              <span class="glyphicon glyphicon-tasks"></span> Sprints list
+          <% end %>
+
+          </li>    
+
+          <li role="presentation">
+         
+          <%= link_to tasks_path do %>
+              <span class="glyphicon glyphicon-tasks"></span> Tasks list
+          <% end %>
+
+          </li>    
+      		
 
     	</ul>
+
+
       </div>
+
+
       <div id="content" >
+
+        
         
         <%= yield %>
       </div>
     </div>
+  </div>
 
 </body>
 </html>

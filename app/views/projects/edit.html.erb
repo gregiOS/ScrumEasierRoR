@@ -1,6 +1,73 @@
-<h1>Editing project</h1>
+<h1>Editing product</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @project %> |
 <%= link_to 'Back', projects_path %>
+
+
+
+<div class="row">
+<div class="col-md-6">
+<table class="table active_users">
+  <thead>
+    <tr>
+      <th>Lista sprintow</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% Sprint.where(:project_id => @project.id).each do |sprint| %>
+      <tr>
+        <td><%= sprint.name%></td>
+        <td><%= link_to 'Show', sprint %></td>
+        <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
+        <td><%= link_to 'Destroy', sprint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div class="col-md-6">
+<table class="table active_users">
+  <thead>
+    <tr>
+      <th>Users</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% User.where(:project_id => @project.id).each do |user| %>
+      <tr>
+        <td><%= user.first_name%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+
+<br>
+<%= link_to 'Dodaj sprint', new_sprint_path(@project.id), class: "btn btn-default" %>
+<%= link_to 'Back', projects_path, class: "btn btn-default" %>
+
+
+<%= form_tag addUser_path, method: :get do %>
+<select name="Users">
+                 <% User.all.each do |user| %>
+        
+          <option><%= user.login%></option>
+            <% end %>
+            
+            </select>
+            <div class="field">
+    <!-- Pole niewidoczne przechowujace id projektu, ktore przyszlo jako parametr w url pod kluczem "id" -->
+   
+    <input type="hidden" name="project_id" value= <%= params[:id]%>>
+  </div>
+  
+  <%= submit_tag 'Add user to project' %>
+<% end %>

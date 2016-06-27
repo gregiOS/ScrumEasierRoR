@@ -27,14 +27,29 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+
+<% @myValue = [*('a'..'z'),*('0'..'9')].shuffle[0,8].join %>
   <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <!-- Pole niewidoczne -->
+    <%= f.hidden_field :password, :value =>  @myValue %>
   </div>
-  <div>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+
+  <div class="field">
+    <!-- Pole niewidoczne -->
+    <%= f.hidden_field :password_confirmation, :value => @myValue %>
   </div>
+ <div class="field">
+  <%= f.label :role %><br>
+    <%= f.select :role, getRoles(id: session[:user_id]) %>
+  </div>
+  
+<div class="field">
+    <%= f.label :project_id %><br>
+
+<%= f.collection_select :project_id, Project.all, :id, :name, {prompt: "Select a project"}, {class: "form-control"} %>
+
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

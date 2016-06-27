@@ -13,9 +13,22 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control'%>
   </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, size: "30x10", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <!-- Pole niewidoczne -->
+  <% @user =  User.find_by(id: session[:user_id]) %>
+    <%= f.hidden_field :user_id, :value =>  @user.id %>
+  </div>
+
+  
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

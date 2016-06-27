@@ -3,6 +3,6 @@ class ExampleMailer < ActionMailer::Base
 
   def sample_email(user)
   	@user = user
-  	mail(to: @user.email, subject: 'Sample mail')
+  	mail(to: @user.email, subject: 'Registration at ScrumEasier')
   end
 end

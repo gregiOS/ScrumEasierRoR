@@ -12,6 +12,23 @@ class SprintsController < ApplicationController
   def show
   end
 
+  def findUser(id)
+    user = User.find(id)
+   return user.first_name
+  end
+  helper_method :findUser
+
+
+  def displayStatus(number)
+    if number == 2 
+  return "In track"
+  else
+  return "Done"
+  end
+  end
+  helper_method :displayStatus
+
+
   # GET /sprints/new
   def new
     @sprint = Sprint.new

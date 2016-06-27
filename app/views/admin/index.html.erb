@@ -1,5 +1,103 @@
 
+<head>
+  
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
     <% if flash[:notice] %>
         <p id="notice"><%= flash[:notice] %></p>
     <% end %>    
     <h1>Panel administratora</h1>
+
+
+    <div class="row">
+
+       <div class="col-md-9">
+
+   <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Users
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+     
+      <table class="table active_users">
+  <thead>
+    <tr>
+      <th>Login</th>
+      <th>First name</th>
+      <th>Second name</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class="info">
+        <td><%= user.login %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.second_name %></td>
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Active projects
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse in">
+      <div class="panel-body">
+
+
+ <table class="table active_users">
+  <thead>
+    <tr>
+      <th>Name</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr class="info">
+        <td><%= project.name %></td>
+     
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+ 
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  

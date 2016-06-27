@@ -7,6 +7,20 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+ def displayStatus(number)
+    if number == 1 
+  return "To do"
+  elsif number == 2
+  return "In progress"
+  elsif number == 3
+    return "For testing"
+  elsif number == 4
+    return "Closed"
+  elsif number == 5 
+    return "Deleted"
+  end
+  end
+  helper_method :displayStatus
   # GET /tasks/1
   # GET /tasks/1.json
   def show
@@ -69,6 +83,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:sprint_id, :name, :importance, :initial_estimate, :user_id, :status)
+      params.require(:task).permit(:sprint_id, :name, :importance, :initial_estimate, :user_id, :status,:description, :finished)
     end
 end

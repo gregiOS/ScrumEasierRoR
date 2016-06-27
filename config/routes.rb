@@ -12,6 +12,10 @@ ScrumApp::Application.routes.draw do
       delete 'logout' => :destroy
     end
 
+  namespace :api do
+    resources :projects
+  end
+
   get "admin/index"
   get "sessions/new"
   get "sessions/create"
@@ -19,5 +23,8 @@ ScrumApp::Application.routes.draw do
   resources :users
 
   resources :projects
+  get 'addUser', to: 'projects#index'
   root 'projects#index'
+
+get "product_owner/index", to: "product_owner#index", as: "product_owner"
 end

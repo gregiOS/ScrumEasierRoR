@@ -1,4 +1,4 @@
-<h1>Logowanie</h1>
+<h1>Log in</h1>
 <% if flash[:alert] %>
   <%= flash[:alert] %>
 <% end %>
@@ -8,10 +8,10 @@
     <%= text_field_tag :login, params[:login] %>
   </div>
   <div>
-    <%= label_tag :password, 'Hasło:' %>
+    <%= label_tag :password, 'Password:' %>
     <%= password_field_tag :password, params[:password] %>
   </div>
   <div>
-    <%= submit_tag "Zaloguj" %>
+    <%= submit_tag "Log in" %>
   </div>
 <% end %>

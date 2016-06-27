@@ -1,18 +1,56 @@
+
+<head>
+  
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
 <p id="notice"><%= notice %></p>
 
+  <div class="row firstRow">
+
+       <div class="col-md-4">
+      <p class="projectName">
+        <strong>Name:</strong>
+        <%= @project.name %>
+      </p>
+    </div>
+      <div class="col-md-8">
+      <p class="projectDate">
+        <strong>Creation date:</strong>
+        <%= @project.created_at %>
+      </p>
+    </div>
+  </div>
+<div class="row">
+<div class="col-md-6">
 <p>
-  <strong>Name:</strong>
-  <%= @project.name %>
+  <strong>Description:</strong>
 </p>
+<p>
 
+<textarea rows="12" cols="50">
+  <%= @project.description %>
+</textarea>
+</p>
+</div>
+ <div class="col-md-6">
+      <p class="productOwner">
+       <strong>Product owner:</strong>
+          <% User.where(:id => @project.user_id).each do |user| %>
+          <%= user.first_name%>
+          <%= user.second_name%>
+           <% end %>
+      </p>
+   </div>
+</div>
 
-<table>
+<div class="row">
+<div class="col-md-6">
+<table class="table active_users">
   <thead>
     <tr>
       <th>Lista sprintow</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Show</th>
     </tr>
   </thead>
 
@@ -21,14 +59,31 @@
       <tr>
         <td><%= sprint.name%></td>
         <td><%= link_to 'Show', sprint %></td>
-        <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
-        <td><%= link_to 'Destroy', sprint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+<div class="col-md-6">
+<table class="table active_users">
+  <thead>
+    <tr>
+      <th>Users</th>
+    </tr>
+  </thead>
 
-<br>
-<%= link_to 'Dodaj sprint', new_sprint_path(@project.id) %>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+  <tbody>
+    <% User.where(:project_id => @project.id).each do |user| %>
+      <tr>
+        <td><%= user.first_name%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

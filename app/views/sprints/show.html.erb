@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Project:</strong>
-  <%= @sprint.project_id %>
-</p>
+
+
+      <p>
+        <strong>Project:</strong>
+        <%= @sprint.project_id %>
+      </p>
+
 
 <p>
   <strong>Name:</strong>
@@ -15,17 +18,25 @@
 <table>
   <thead>
     <tr>
-      <th>Lista taskow</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Name</th>
+      <th>Importance</th>
+      <th>Initial estimate</th>
+      <th>User</th>
+      <th>Status</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
     </tr>
   </thead>
-
+  
   <tbody>
   	<% Task.where(:sprint_id => @sprint.id).each do |task| %>
       <tr>
         <td><%= task.name%></td>
+        <td><%= task.importance %></td>
+        <td><%= task.initial_estimate %></td>
+        <td><%= findUser(task.user_id) %></td>
+        <td><%= displayStatus(task.status) %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,6 +44,8 @@
     <% end %>
   </tbody>
 </table>
+
+
 
 <br>
 <%= link_to 'Dodaj task', new_task_path(@sprint.id) %>
